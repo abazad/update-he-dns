@@ -2,10 +2,7 @@
 
 from __future__ import absolute_import, print_function
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 
 __version__ = '0.1'
@@ -25,6 +22,11 @@ setup(name='update-he-dns',
           'Programming Language :: Python',
       ],
       long_description=open('README.rst').read(),
-      scripts=['bin/update-he-dns', ],
+      py_modules=["updatehedns"],
+      entry_points = {
+        'console_scripts': [
+          'update-he-dns = updatehedns:main',
+        ],
+      },
       requires=['Python (>2.6)']
       )
